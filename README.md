@@ -4,6 +4,21 @@
 * Kafka
 * [Consumer](https://github.com/DarkReduX/kafka-consume-http-server-Golang)
 * [Server](https://github.com/DarkReduX/HTTP-Server-Golang)
+# Settings
+* MONGO_URI - Mongo-database connection, this database contains 2 collections (entities, users)
+* POSTGRES_URI/POSTGRES_LOCAL_URI - PostgreSQL connections of local and remote database, contains 2 tables (entities, users), to init them use this script
+``` SQL
+create table users (username varchar(30) PRIMARY KEY, password varchar(30), token varchar(256) null);
+Insert into Users (username, password, token) 
+values ('admin','admin','eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MjgwNjk5NTIuNjA4NTE2LCJzdWIiOiJhZG1pbiJ9.4Z-6tW4gJT4QqogDR6Y-A9gBummz-fnO0GXTQRGHwvQ');
+
+create table entities (uuid varchar(128) Primary key, name varchar(30), size integer)
+insert into entities (uuid, name, size) 
+values ('5', 'ball', 32), ('1', 'box', 42)
+```
+* POSTGRES_USER - postgreSQL user for connection with database
+* POSTGRES_PASSWORD - postgreSQL user's password
+* POSTGRES_DB - database name
 # File code
 
 ``` yaml
