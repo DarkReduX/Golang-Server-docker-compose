@@ -5,8 +5,12 @@
 * [Consumer](https://github.com/DarkReduX/kafka-consume-http-server-Golang)
 * [Server](https://github.com/DarkReduX/HTTP-Server-Golang)
 # Settings
+To run http-server u need to configure environment variables:
 * MONGO_URI - Mongo-database connection, this database contains 2 collections (entities, users)
 * POSTGRES_URI/POSTGRES_LOCAL_URI - PostgreSQL connections of local and remote database, contains 2 tables (entities, users), to init them use this script
+* REDIS_URI - Redis database connection string
+* REDIS_USERNAME - Redis username
+* REDIS_PASSWORD - Redis username password
 ``` SQL
 create table users (username varchar(30) PRIMARY KEY, password varchar(30), token varchar(256) null);
 Insert into Users (username, password, token) 
@@ -71,9 +75,8 @@ services:
     environment:
       MONGO_URI: mongodb+srv://dbuser:dbuser@serverdb.k1qo7.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
       POSTGRES_URI: postgres://jzdpzbxo:VRpZC6MeToLiY5_hDa0-lNj5VRJAZfSi@ella.db.elephantsql.com/jzdpzbxo
-      KAFKA_ADDR: kafka:9092
       POSTGRES_LOCAL_URI: host=database user=postgres password=a!11111111 dbname=postgres sslmode=disable
-      P_VAL: qqqqqQ_1 # change
+      KAFKA_ADDR: kafka:9092
     networks:
       - local
 
@@ -92,8 +95,10 @@ services:
       POSTGRES_LOCAL_URI: host=database user=postgres password=a!11111111 dbname=postgres sslmode=disable
       MONGO_URI: mongodb+srv://dbuser:dbuser@serverdb.k1qo7.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
       POSTGRES_URI: postgres://jzdpzbxo:VRpZC6MeToLiY5_hDa0-lNj5VRJAZfSi@ella.db.elephantsql.com/jzdpzbxo
+      REDIS_URI: redis-18387.c14.us-east-1-2.ec2.cloud.redislabs.com:18387
+      REDIS_USERNAME: DarkReduX
+      REDIS_PASSWORD: qqqqqQ_1
       KAFKA_ADDR: kafka:9092
-      P_VAL: qqqqqQ_1 # change
     networks:
       - local
 
